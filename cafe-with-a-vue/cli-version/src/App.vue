@@ -1,13 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="./styles.css" />
-    <title>Cafe with a Vue</title>
-  </head>
-  <body>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      address: '9274 Beurre Ave, Paris, France',
+      email: 'hello@cafewithavue.bakery',
+      phone: '+08 88 88 88 88 88',
+      restaurantName: 'Cafe with A Vue',
+      shoppingCart: 0,
+      simpleMenu: [
+        {
+          name: 'Crossiant',
+          image: {
+            source: '/images/crossiant.jpg',
+            alt: 'A crossiant'
+          },
+          inStock: true,
+          quantity: 1
+        },
+        {
+          name: 'French Baguette',
+          image: {
+            source: '/images/french-baguette.jpeg',
+            alt: 'Four French Baguettes'
+          },
+          inStock: true,
+          quantity: 1
+        },
+        {
+          name: 'Éclair',
+          image: {
+            source: '/images/eclair.jpg',
+            alt: 'Chocolate Éclair'
+          },
+          inStock: false,
+          quantity: 1
+        }
+      ]
+    },
+    computed: {
+      copyright() {
+        const currentYear = new Date().getFullYear()
+
+        return `Copyright ${this.restaurantName} ${currentYear}`
+      }
+    },
+    methods: {
+      addToShoppingCart(amount) {
+        this.shoppingCart += amount
+      }
+    }
+  })
+</script>
+
+<template>
     <div id="app" class="app">
       <h1>{{ restaurantName }}</h1>
       <p class="description">
@@ -65,60 +110,49 @@
         <p>{{ copyright }}</p>
       </footer>
     </div>
+</template>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script>
-      const app = new Vue({
-        el: '#app',
-        data: {
-          address: '9274 Beurre Ave, Paris, France',
-          email: 'hello@cafewithavue.bakery',
-          phone: '+08 88 88 88 88 88',
-          restaurantName: 'Cafe with A Vue',
-          shoppingCart: 0,
-          simpleMenu: [
-            {
-              name: 'Crossiant',
-              image: {
-                source: '/images/crossiant.jpg',
-                alt: 'A crossiant'
-              },
-              inStock: true,
-              quantity: 1
-            },
-            {
-              name: 'French Baguette',
-              image: {
-                source: '/images/french-baguette.jpeg',
-                alt: 'Four French Baguettes'
-              },
-              inStock: true,
-              quantity: 1
-            },
-            {
-              name: 'Éclair',
-              image: {
-                source: '/images/eclair.jpg',
-                alt: 'Chocolate Éclair'
-              },
-              inStock: false,
-              quantity: 1
-            }
-          ]
-        },
-        computed: {
-          copyright() {
-            const currentYear = new Date().getFullYear()
+<style>
+  .app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+  }
 
-            return `Copyright ${this.restaurantName} ${currentYear}`
-          }
-        },
-        methods: {
-          addToShoppingCart(amount) {
-            this.shoppingCart += amount
-          }
-        }
-      })
-    </script>
-  </body>
-</html>
+  .description {
+    max-width: 960px;
+    font-size: 1.2rem;
+    margin: 0 auto;
+  }
+
+  .footer {
+    text-align: center;
+    font-style: italic;
+  }
+
+  .menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .menu-item {
+    display: flex;
+    width: 500px;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+
+  .menu-item__image {
+    max-width: 300px;
+  }
+
+  .shopping-cart {
+    position: absolute;
+    right: 30px;
+    top: 0;
+  }
+</style>
