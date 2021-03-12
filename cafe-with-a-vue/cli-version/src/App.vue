@@ -1,57 +1,3 @@
-<script>
-  const app = new Vue({
-    el: '#app',
-    data: {
-      address: '9274 Beurre Ave, Paris, France',
-      email: 'hello@cafewithavue.bakery',
-      phone: '+08 88 88 88 88 88',
-      restaurantName: 'Cafe with A Vue',
-      shoppingCart: 0,
-      simpleMenu: [
-        {
-          name: 'Crossiant',
-          image: {
-            source: '/images/crossiant.jpg',
-            alt: 'A crossiant'
-          },
-          inStock: true,
-          quantity: 1
-        },
-        {
-          name: 'French Baguette',
-          image: {
-            source: '/images/french-baguette.jpeg',
-            alt: 'Four French Baguettes'
-          },
-          inStock: true,
-          quantity: 1
-        },
-        {
-          name: 'Éclair',
-          image: {
-            source: '/images/eclair.jpg',
-            alt: 'Chocolate Éclair'
-          },
-          inStock: false,
-          quantity: 1
-        }
-      ]
-    },
-    computed: {
-      copyright() {
-        const currentYear = new Date().getFullYear()
-
-        return `Copyright ${this.restaurantName} ${currentYear}`
-      }
-    },
-    methods: {
-      addToShoppingCart(amount) {
-        this.shoppingCart += amount
-      }
-    }
-  })
-</script>
-
 <template>
     <div id="app" class="app">
       <h1>{{ restaurantName }}</h1>
@@ -111,6 +57,60 @@
       </footer>
     </div>
 </template>
+
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      address: '9274 Beurre Ave, Paris, France',
+      email: 'hello@cafewithavue.bakery',
+      phone: '+08 88 88 88 88 88',
+      restaurantName: 'Cafe with A Vue',
+      shoppingCart: 0,
+      simpleMenu: [
+        {
+          name: 'Crossiant',
+          image: {
+            source: '/images/crossiant.jpg',
+            alt: 'A crossiant'
+          },
+          inStock: true,
+          quantity: 1
+        },
+        {
+          name: 'French Baguette',
+          image: {
+            source: '/images/french-baguette.jpeg',
+            alt: 'Four French Baguettes'
+          },
+          inStock: true,
+          quantity: 1
+        },
+        {
+          name: 'Éclair',
+          image: {
+            source: '/images/eclair.jpg',
+            alt: 'Chocolate Éclair'
+          },
+          inStock: false,
+          quantity: 1
+        }
+      ]
+    },
+    computed: {
+      copyright() {
+        const currentYear = new Date().getFullYear()
+
+        return `Copyright ${this.restaurantName} ${currentYear}`
+      }
+    },
+    methods: {
+      addToShoppingCart(amount) {
+        this.shoppingCart += amount
+      }
+    }
+  })
+</script>
 
 <style>
   .app {
